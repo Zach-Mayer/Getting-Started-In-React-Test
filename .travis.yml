@@ -15,4 +15,4 @@ cache:
     - 'node_modules'
 
 script:
-  - yarn run test -i --config jest.config.ci.js
+  - yarn test
