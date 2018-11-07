@@ -14,12 +14,12 @@ export default class FilterableProductTable extends Component {
     this.onOnlyInStockChanged = this.onOnlyInStockChanged.bind(this);
   }
 
-  onFilterTextChanged (e) {
-    this.setState({ filterText: e.target.value });
+  onFilterTextChanged (filterText) {
+    this.setState({ filterText });
   }
 
-  onOnlyInStockChanged (e) {
-    this.setState({ onlyInStock: e.target.checked });
+  onOnlyInStockChanged (onlyInStock) {
+    this.setState({ onlyInStock });
   }
 
   render() {

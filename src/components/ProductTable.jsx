@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 const ProductCategoryRow = ({ category }) => (
-  <tr>
+  <tr className='category'>
     <th colSpan="2">{category}</th>
   </tr>
 );
 
 const ProductRow = ({ product }) => (
-  <tr>
+  <tr className='product'>
     <td>
       {product.stocked ? product.name : <span style={{color: 'red'}}>{product.name}</span>}
     </td>
