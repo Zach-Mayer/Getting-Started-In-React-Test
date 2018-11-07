@@ -13,9 +13,9 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <body className='App-Body'>
+        <div className='App-Body'>
           <FilterableProductTable products={products} />
-        </body>
+        </div>
       </div>
     );
   }
