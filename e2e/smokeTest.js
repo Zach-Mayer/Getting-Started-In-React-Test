@@ -1,6 +1,6 @@
-const sauce = require('../sauce');
+import sauce from '../sauce';
 
-module.exports = {
+export default {
   beforeEach: browser => {
     browser
       .url('http://localhost:3000')
