@@ -20,7 +20,7 @@ cache:
     - 'node_modules'
 
 before_script:
-  - yarn && node server.js &
+  - node server.js &
 
 script:
   - yarn testCI
