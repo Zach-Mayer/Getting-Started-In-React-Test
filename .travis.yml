@@ -20,9 +20,9 @@ cache:
     - 'node_modules'
 
 before_script:
-  - node server.js &
+  - yarn i && node server.js &
 
 script:
   - yarn testCI
-  - nightwatch --env chrome,ie11
+  - nightwatch --env chrome
   - pkill node

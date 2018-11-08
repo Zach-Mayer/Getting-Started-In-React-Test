@@ -2,7 +2,7 @@ require('@babel/register');
 const fs = require('fs');
 
 module.exports = ((settings) => {
-  if (process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY && process.env.TRAVIS_JOB_NUMBER) {
+  if (process.env.SAUCE_USERNAME && process.env.SAUCE_ACCESS_KEY && (process.env.TRAVIS_JOB_NUMBER || process.env.FORCE_SAUCE)) {
     const TRAVIS_JOB_NUMBER = process.env.TRAVIS_JOB_NUMBER;
     settings.test_settings.default = {
       launch_url: 'http://ondemand.saucelabs.com:80',
@@ -15,11 +15,18 @@ module.exports = ((settings) => {
         enabled: false,
         path: '',
       },
-      desiredCapabilities: {
+      globals: {
+        waitForConditionTimeout: 10000
+      }
+    };
+    if (process.env.TRAVIS_JOB_NUMBER) {
+      console.log(process.env.TRAVIS_JOB_NUMBER);
+
+      settings.test_settings.default.desiredCapabilities = {
         build: `build-${TRAVIS_JOB_NUMBER}`,
         'tunnel-identifier': TRAVIS_JOB_NUMBER,
-      },
-    };
+      };
+    }
     settings.test_settings.chrome = {
       desiredCapabilities: {
         browserName: 'chrome',
