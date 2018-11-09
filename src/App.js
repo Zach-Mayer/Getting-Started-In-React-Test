@@ -13,6 +13,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Tests Pass In CI!</h2>
+          <h2>Feature Branch Promoted!</h2>
         </header>
         <div className='App-Body'>
           <FilterableProductTable products={products} />
