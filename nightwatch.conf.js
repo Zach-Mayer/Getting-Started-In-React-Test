@@ -21,7 +21,8 @@ module.exports = ((settings) => {
     };
     if (process.env.TRAVIS_JOB_NUMBER) {
       console.log(process.env.TRAVIS_JOB_NUMBER);
-
+      settings.selenium.start_process = false;
+      settings.selenium.start_session = false;
       settings.test_settings.default.desiredCapabilities = {
         build: `build-${TRAVIS_JOB_NUMBER}`,
         'tunnel-identifier': TRAVIS_JOB_NUMBER,
@@ -51,6 +52,7 @@ module.exports = ((settings) => {
     settings.selenium.cli_args['webdriver.gecko.driver'] += geckodriverFileName;
     settings.selenium.cli_args['webdriver.chrome.driver'] += chromedriverFileName;
   } catch (ex) {
+    console.log('File Access Error');
     console.log(ex.message);
   }
   return settings;
