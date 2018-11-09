@@ -42,14 +42,16 @@ module.exports = ((settings) => {
       },
     }
   }
+  try {
+    const seleniumServerFileName = fs.readdirSync('node_modules/selenium-standalone/.selenium/selenium-server/');
+    const geckodriverFileName = fs.readdirSync('node_modules/selenium-standalone/.selenium/geckodriver/')[0];
+    const chromedriverFileName = fs.readdirSync('node_modules/selenium-standalone/.selenium/chromedriver/')[0];
 
-  const seleniumServerFileName = fs.readdirSync('node_modules/selenium-standalone/.selenium/selenium-server/');
-  const geckodriverFileName = fs.readdirSync('node_modules/selenium-standalone/.selenium/geckodriver/')[0];
-  const chromedriverFileName = fs.readdirSync('node_modules/selenium-standalone/.selenium/chromedriver/')[0];
-
-  settings.selenium.server_path += seleniumServerFileName;
-  settings.selenium.cli_args['webdriver.gecko.driver'] += geckodriverFileName;
-  settings.selenium.cli_args['webdriver.chrome.driver'] += chromedriverFileName;
-
+    settings.selenium.server_path += seleniumServerFileName;
+    settings.selenium.cli_args['webdriver.gecko.driver'] += geckodriverFileName;
+    settings.selenium.cli_args['webdriver.chrome.driver'] += chromedriverFileName;
+  } catch (ex) {
+    console.log(ex.message);
+  }
   return settings;
 })(require('./nightwatch.json'));
