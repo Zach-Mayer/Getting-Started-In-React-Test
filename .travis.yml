@@ -23,5 +23,6 @@ before_script:
 
 script:
   - npm run testCI
+  - env
   - nightwatch --env chrome
   - pkill node
